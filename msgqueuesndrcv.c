@@ -32,12 +32,12 @@ int main(void){
 
         len=msgrcv(msgid, &msg, 50, 0, 0);
         printf("Received Message is '%s' [%d]\n",msg.text, len);
-
+        msgctl(msgid,IPC_RMID,0); //removes the message queue
         return 0;
 }
 
 /*
 This code is just to show that 'message queue' can work in a single process.
 Pipe can only send data from a parent process to a child process, 
-but 'Message Queue' can do it both ways, or even in a single process.
+but 'Message Queue' can do it both ways, or even within a single process.
 */
